@@ -8,7 +8,7 @@ import ExpertiseSection from './components/expertise';
 
 export default function App() {
   return (
-    <Router basename="/my-portfolio-v2">
+    <Router basename="/">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/instagram-case-study" element={<InstagramCaseStudy />} />
@@ -84,7 +84,7 @@ function Home() {
 
         <a
           className="btn"
-          href="/my-portfolio-v2/resume.pdf"
+          href="/resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
         >

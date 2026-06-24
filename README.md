@@ -16,7 +16,7 @@ A scalable UI for scheduling and managing social media posts with Instagram-styl
 
 ## Live Demo
 
-https://bk-ml.github.io/my-portfolio-v2
+https://bk-ml.github.io/
 
 ## Screenshots
 
