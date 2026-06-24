@@ -12,160 +12,120 @@ export default function WorkSection() {
     <section>
       <h2 className="sectionTitle">Work</h2>
 
-      {/* CASE STUDY 1 — STRONGEST */}
-      <div className="card">
-        <h3>Social Publishing Platform (Instagram Integration)</h3>
+      {workData.map((item, index) => (
+        <div className="card" key={item.title}>
+          <h3>{item.title}</h3>
 
-        <p>
-          Built and owned a scalable social publishing system integrating with
-          Instagram APIs, enabling secure and reliable asynchronous content
-          sharing.
-        </p>
+          <p>{item.summary}</p>
 
-        <button onClick={() => toggle(0)} className="linkButton">
-          {openIndex === 0 ? 'Show Less ↑' : 'Read More →'}
-        </button>
+          <button className="linkButton" onClick={() => toggle(index)}>
+            {openIndex === index ? 'Show Less ↑' : 'Read More →'}
+          </button>
 
-        {openIndex === 0 && (
-          <div className="caseStudy">
-            <h4>Overview</h4>
-            <p>
-              Led end-to-end development from requirement analysis and POC to
-              production rollout, collaborating across US and Spain teams.
-            </p>
+          {openIndex === index && (
+            <div className="caseStudy">
+              <h4>Overview</h4>
+              <p>{item.details.overview}</p>
 
-            <h4>Problem</h4>
-            <p>
-              Publishing content required coordinating multiple external APIs,
-              handling media constraints, token security, and ensuring
-              reliability at scale.
-            </p>
+              <h4>Problem</h4>
+              <p>{item.details.problem}</p>
 
-            <h4>Approach</h4>
-            <ul>
-              <li>Designed API architecture and database schema</li>
-              <li>
-                Built async workflows using Step Functions (202 response model)
-              </li>
-              <li>Orchestrated multi-step publish flow across 5–6 APIs</li>
-              <li>Implemented retries, idempotency, and failure handling</li>
-              <li>Used DynamoDB Streams for token lifecycle management</li>
-              <li>
-                Handled secure token storage with security team collaboration
-              </li>
-              <li>
-                Enabled safe public media handling with malware considerations
-              </li>
-              <li>Authored ADRs and drove phased rollout</li>
-              <li>Collaborated with US (frontend) and Spain (backend) teams</li>
-            </ul>
+              <h4>Approach</h4>
+              <ul>
+                {item.details.approach.map((point, i) => (
+                  <li key={i}>{point}</li>
+                ))}
+              </ul>
 
-            <h4>Impact</h4>
-            <p>
-              Delivered a scalable and reliable publishing system with improved
-              user experience and strong cross-team execution as the primary
-              owner.
-            </p>
-            <p className="deepDive">
-              Want the full breakdown? This project involved end-to-end
-              ownership, cross-team collaboration, and complex async system
-              design.
-            </p>
+              <h4>Impact</h4>
+              <p>{item.details.impact}</p>
 
-            <Link to="/instagram-case-study" target="_blank">
-              View Case Study
-            </Link>
-          </div>
-        )}
-      </div>
-
-      {/* CASE STUDY 2 */}
-      <div className="card">
-        <h3>Organizer Notification Center</h3>
-
-        <p>
-          Built a scalable notification system enabling reliable communication,
-          engagement tracking, and experimentation.
-        </p>
-
-        <button onClick={() => toggle(1)} className="linkButton">
-          {openIndex === 1 ? 'Show Less ↑' : 'Read More →'}
-        </button>
-
-        {openIndex === 1 && (
-          <div className="caseStudy">
-            <h4>Overview</h4>
-            <p>
-              Developed a centralized notification system to improve organizer
-              communication and engagement.
-            </p>
-
-            <h4>Problem</h4>
-            <p>
-              Lack of unified communication led to missed updates and low
-              engagement.
-            </p>
-
-            <h4>Approach</h4>
-            <ul>
-              <li>Designed backend services for notification delivery</li>
-              <li>Built async workflows for high-volume processing</li>
-              <li>Integrated messaging and analytics systems</li>
-              <li>Enabled A/B experimentation</li>
-            </ul>
-
-            <h4>Impact</h4>
-            <p>
-              Established a reliable communication channel and enabled
-              data-driven product improvements.
-            </p>
-          </div>
-        )}
-      </div>
-
-      {/* CASE STUDY 3 */}
-      <div className="card">
-        <h3>Event-Driven Data Processing Pipeline</h3>
-
-        <p>
-          Designed a high-throughput event-driven system for processing and
-          orchestrating asynchronous workflows at scale.
-        </p>
-
-        <button onClick={() => toggle(2)} className="linkButton">
-          {openIndex === 2 ? 'Show Less ↑' : 'Read More →'}
-        </button>
-
-        {openIndex === 2 && (
-          <div className="caseStudy">
-            <h4>Overview</h4>
-            <p>
-              Built a distributed pipeline for large-scale event ingestion,
-              transformation, and downstream integrations.
-            </p>
-
-            <h4>Problem</h4>
-            <p>
-              Existing systems struggled with reliability, scale, and failure
-              handling in async workflows.
-            </p>
-
-            <h4>Approach</h4>
-            <ul>
-              <li>Designed event-driven architecture using queues/streams</li>
-              <li>Implemented idempotent consumers and retry mechanisms</li>
-              <li>Added observability with logging, metrics, and alerts</li>
-              <li>Improved fault tolerance with graceful failure handling</li>
-            </ul>
-
-            <h4>Impact</h4>
-            <p>
-              Improved reliability and scalability, enabling consistent
-              processing of high-volume workloads.
-            </p>
-          </div>
-        )}
-      </div>
+              {item.details.link && (
+                <Link to={item.details.link} target="_blank">
+                  View Case Study
+                </Link>
+              )}
+            </div>
+          )}
+        </div>
+      ))}
     </section>
   );
 }
+
+const workData = [
+  {
+    title: 'Social Publishing Platform (Instagram Integration)',
+    summary:
+      'Built a distributed publishing system integrating Instagram APIs for reliable, asynchronous content publishing at scale.',
+
+    details: {
+      overview:
+        'Led end-to-end design and delivery of a social publishing system across US, Spain, and India teams, from architecture to production rollout.',
+
+      problem:
+        'Publishing required coordinating multiple external APIs, handling media constraints, authentication flows, and ensuring reliability under failure conditions.',
+
+      approach: [
+        'Designed event-driven architecture using AWS Step Functions',
+        'Built async multi-step publish workflow with 202 response model',
+        'Implemented idempotency, retries, and DLQ-based failure handling',
+        'Designed secure token lifecycle management with DynamoDB Streams',
+        'Collaborated on media security (malware checks, access control)',
+        'Authored ADRs and led phased production rollout',
+      ],
+
+      impact:
+        'Delivered a reliable, scalable publishing system enabling secure cross-platform Instagram integration with production-grade reliability.',
+      link: '/instagram-case-study',
+    },
+  },
+
+  {
+    title: 'Organizer Notification Center',
+    summary:
+      'Built a centralized notification system to improve organizer communication and engagement tracking.',
+
+    details: {
+      overview:
+        'Designed and developed a notification platform for unified communication across organizer workflows.',
+
+      problem:
+        'Fragmented notification channels led to inconsistent delivery and poor engagement visibility.',
+
+      approach: [
+        'Designed scalable notification backend for high-volume delivery',
+        'Integrated Braze for messaging and analytics',
+        'Built async processing pipeline for reliability and throughput',
+        'Enabled A/B experimentation for messaging optimization',
+      ],
+
+      impact:
+        'Improved communication reliability and enabled data-driven engagement improvements.',
+    },
+  },
+
+  {
+    title: 'Event-Driven Data Processing Pipeline',
+    summary:
+      'Designed a distributed event-driven pipeline for large-scale asynchronous data processing and integrations.',
+
+    details: {
+      overview:
+        'Built a scalable pipeline for event ingestion, transformation, and downstream processing.',
+
+      problem:
+        'Existing systems lacked reliability, observability, and failure resilience at scale.',
+
+      approach: [
+        'Designed event-driven architecture using queues and streaming systems',
+        'Implemented idempotent consumers with retry and backoff strategies',
+        'Built observability layer (logs, metrics, alerts)',
+        'Improved fault tolerance with graceful degradation patterns',
+      ],
+
+      impact:
+        'Improved system reliability and enabled consistent processing of high-throughput workloads.',
+    },
+  },
+];

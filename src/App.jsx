@@ -4,6 +4,7 @@ import InstagramCaseStudy from './components/InstagramCaseStudy';
 import ExperienceSection from './components/experience';
 import ProjectSection from './components/projects';
 import './App.css';
+import ExpertiseSection from './components/expertise';
 
 export default function App() {
   return (
@@ -48,12 +49,12 @@ function Home() {
           </h1>
         </div>
 
-        <h2>Backend • Distributed Systems • Full Stack • AI Systems</h2>
+        <h2>Full Stack • System Design • Distributed Systems • AI Systems</h2>
 
         <p className="heroDesc">
-          I design and scale event-driven systems processing millions of events
-          daily, with strong guarantees around reliability, latency, and fault
-          tolerance.
+          I design and build end-to-end products — from scalable backend systems
+          and APIs to responsive frontend interfaces — with a focus on
+          performance, reliability, and clean architecture.
         </p>
       </section>
 
@@ -64,24 +65,7 @@ function Home() {
 
       {/* EXPERTISE */}
       <section id="expertise" className="section">
-        <h2 className="sectionTitle">Expertise</h2>
-
-        <div className="tags">
-          <span>Distributed Systems</span>
-          <span>System Design (HLD/LLD)</span>
-          <span>Microservices Architecture</span>
-          <span>Event-Driven Architecture</span>
-          <span>Node.js</span>
-          <span>Go</span>
-          <span>AWS</span>
-          <span>Docker</span>
-          <span>Kubernetes</span>
-          <span>Kafka / Message Queues</span>
-          <span>Redis & Caching</span>
-          <span>Database Design</span>
-          <span>API Design (REST/gRPC)</span>
-          <span>React</span>
-        </div>
+        <ExpertiseSection />
       </section>
 
       {/* EXPERIENCE */}

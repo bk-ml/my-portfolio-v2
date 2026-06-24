@@ -1198,3 +1198,65 @@ body::before {
   color: rgba(255, 255, 255, 0.75);
   line-height: 1.8;
 }
+
+.appleGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+@media (max-width: 768px) {
+  .appleGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 🍏 Apple-style card */
+.appleCard {
+  padding: 18px;
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(12px);
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+/* subtle hover lift */
+.appleCard:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.appleCard h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.desc {
+  font-size: 0.85rem;
+  opacity: 0.65;
+  margin-bottom: 12px;
+}
+
+/* tags become subtle pills */
+.appleCard .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.appleCard .tags span {
+  font-size: 0.72rem;
+  padding: 4px 8px;
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.75);
+}

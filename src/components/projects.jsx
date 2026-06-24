@@ -52,7 +52,7 @@ export default function ProjectSection() {
         <div className="column">
           <div className="columnLabel">Highlights</div>
           <ul>
-            <li>Full-duplex pipeline (STT → LLM → TTS → Audio)</li>
+            <li>Full-duplex pipeline (Audio → STT → LLM → TTS → Audio)</li>
             <li>SSE + WebSocket streaming architecture</li>
             <li>TTS bottleneck analysis (RTF 1.84, TTFC 3675ms)</li>
             <li>Production debugging: VAD loop, model loading, proxy issues</li>

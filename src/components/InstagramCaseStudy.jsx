@@ -7,42 +7,30 @@ export default function InstagramCaseStudy() {
       </h1>
 
       <p className="caseStudySubtitle">
-        End-to-end ownership of a scalable, asynchronous publishing system
-        integrating with external APIs, handling security, reliability, and
-        cross-team execution.
+        Built and owned a distributed social publishing system enabling secure
+        and reliable Instagram content publishing through asynchronous workflows
+        across multiple teams and external APIs.
       </p>
 
       {/* OVERVIEW */}
       <div className="caseStudySection">
         <h2 className="caseStudySectionTitle">Overview</h2>
         <p className="caseStudyText">
-          Owned and delivered a social publishing platform enabling users to
-          share content directly to Instagram. Led the project from requirement
-          clarification and POC to production rollout, collaborating across
-          multiple teams (US frontend, Spain backend owners).
+          Led end-to-end design and delivery of a social publishing platform
+          that enabled users to publish content directly to Instagram. Owned the
+          system from architecture design and API definition to production
+          rollout across US, Spain, and India teams.
         </p>
-      </div>
-
-      {/* MY ROLE */}
-      <div className="caseStudySection">
-        <h2 className="caseStudySectionTitle">My Role</h2>
-        <ul className="caseStudyList">
-          <li>Sole backend owner of the project</li>
-          <li>Drove requirement discussions with product stakeholders</li>
-          <li>Designed system architecture and APIs</li>
-          <li>Authored ADRs and technical proposals</li>
-          <li>Led cross-team collaboration across regions</li>
-        </ul>
       </div>
 
       {/* PROBLEM */}
       <div className="caseStudySection caseStudySection--emphasis">
         <h2 className="caseStudySectionTitle">Problem</h2>
         <p className="caseStudyText">
-          Publishing content to Instagram required coordinating multiple
-          external APIs, handling strict media constraints, ensuring secure
-          token management, and maintaining system reliability. A synchronous
-          approach led to poor user experience and fragile integrations.
+          Instagram publishing required coordination across multiple external
+          APIs with strict media constraints, OAuth-based authentication, and
+          unreliable third-party dependencies. A synchronous flow caused poor
+          user experience, tight coupling, and high failure rates.
         </p>
       </div>
 
@@ -50,68 +38,58 @@ export default function InstagramCaseStudy() {
       <div className="caseStudySection">
         <h2 className="caseStudySectionTitle">System Design</h2>
         <ul className="caseStudyList">
-          <li>Designed scalable API architecture for publishing workflows</li>
-          <li>Defined database schema for tracking publish states</li>
-          <li>Handled multi-step orchestration across 5–6 external APIs</li>
-          <li>Ensured idempotency and consistency across retries</li>
+          <li>
+            Designed event-driven architecture for multi-step publishing
+            workflows
+          </li>
+          <li>
+            Modeled durable publish state tracking across distributed services
+          </li>
+          <li>
+            Orchestrated 5–6 external API calls using workflow-based execution
+          </li>
+          <li>Built system for idempotency, retries, and safe reprocessing</li>
         </ul>
       </div>
 
-      {/* ASYNC */}
+      {/* CORE CHALLENGES */}
       <div className="caseStudySection">
-        <h2 className="caseStudySectionTitle">Asynchronous Processing</h2>
-        <p className="caseStudyText">
-          Converted the publishing flow into an asynchronous pipeline to improve
-          user experience and system reliability.
-        </p>
+        <h2 className="caseStudySectionTitle">Key Engineering Challenges</h2>
+
         <ul className="caseStudyList">
-          <li>Returned HTTP 202 responses for non-blocking UX</li>
-          <li>Used Step Functions for orchestration</li>
-          <li>Implemented retry and failure handling mechanisms</li>
+          <li>
+            <b>Asynchronous Execution:</b> Moved from synchronous processing to
+            async workflows using 202-based response model
+          </li>
+
+          <li>
+            <b>Reliability:</b> Built retry mechanisms, failure recovery, and
+            safe reprocessing for external API failures
+          </li>
+
+          <li>
+            <b>Security:</b> Designed secure OAuth token lifecycle management
+            with refresh workflows and access control collaboration
+          </li>
+
+          <li>
+            <b>Media Constraints:</b> Handled requirement for publicly
+            accessible media while managing security risks (malware + exposure
+            control)
+          </li>
         </ul>
       </div>
 
-      {/* SECURITY */}
+      {/* CROSS TEAM */}
       <div className="caseStudySection">
-        <h2 className="caseStudySectionTitle">Security & Token Management</h2>
+        <h2 className="caseStudySectionTitle">Cross-Team Execution</h2>
         <ul className="caseStudyList">
-          <li>Handled access token lifecycle securely</li>
-          <li>Integrated DynamoDB Streams for token refresh workflows</li>
-          <li>Collaborated with security teams for compliance</li>
-        </ul>
-      </div>
-
-      {/* MEDIA */}
-      <div className="caseStudySection">
-        <h2 className="caseStudySectionTitle">Media Handling Challenges</h2>
-        <p className="caseStudyText">
-          Instagram APIs required media to be publicly accessible, introducing
-          security risks.
-        </p>
-        <ul className="caseStudyList">
-          <li>Enabled controlled public access for media assets</li>
-          <li>Addressed malware and security concerns</li>
-        </ul>
-      </div>
-
-      {/* COLLAB */}
-      <div className="caseStudySection">
-        <h2 className="caseStudySectionTitle">Cross-Team Collaboration</h2>
-        <ul className="caseStudyList">
-          <li>Worked with Spain team (backend repo owners)</li>
-          <li>Partnered with US team for frontend integration</li>
-          <li>Coordinated testing and release across teams</li>
-          <li>Regular stakeholder updates and alignment</li>
-        </ul>
-      </div>
-
-      {/* DECISIONS */}
-      <div className="caseStudySection">
-        <h2 className="caseStudySectionTitle">Key Technical Decisions</h2>
-        <ul className="caseStudyList">
-          <li>Move from synchronous → asynchronous processing</li>
-          <li>Use orchestration over direct API chaining</li>
-          <li>Design for idempotency and failure recovery</li>
+          <li>
+            Collaborated across US frontend, Spain backend, and platform teams
+          </li>
+          <li>Authored architecture decision records (ADRs)</li>
+          <li>Aligned rollout strategy across distributed engineering teams</li>
+          <li>Led phased production rollout as primary backend owner</li>
         </ul>
       </div>
 
@@ -119,10 +97,10 @@ export default function InstagramCaseStudy() {
       <div className="caseStudySection caseStudySection--emphasis">
         <h2 className="caseStudySectionTitle">Impact</h2>
         <ul className="caseStudyList">
-          <li>Delivered a reliable and scalable publishing system</li>
-          <li>Improved user experience with async workflows</li>
-          <li>Enabled secure integration with external platforms</li>
-          <li>Successfully executed cross-team delivery as primary owner</li>
+          <li>Delivered production-grade Instagram publishing system</li>
+          <li>Enabled reliable asynchronous publishing workflows at scale</li>
+          <li>Reduced system fragility in multi-API orchestration flows</li>
+          <li>Successfully shipped as end-to-end system owner across teams</li>
         </ul>
       </div>
 
@@ -130,9 +108,10 @@ export default function InstagramCaseStudy() {
       <div className="caseStudySection">
         <h2 className="caseStudySectionTitle">Key Learnings</h2>
         <ul className="caseStudyList">
-          <li>Designing resilient systems for unreliable external APIs</li>
-          <li>Balancing security with platform constraints</li>
-          <li>Driving alignment across distributed teams</li>
+          <li>Designing resilient systems around unreliable external APIs</li>
+          <li>Importance of orchestration over direct API chaining</li>
+          <li>Balancing security constraints with product usability</li>
+          <li>Driving alignment across distributed engineering teams</li>
         </ul>
       </div>
 
