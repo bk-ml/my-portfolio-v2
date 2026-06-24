@@ -1,16 +1,30 @@
-# React + Vite
+# Social Publishing Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A scalable UI for scheduling and managing social media posts with Instagram-style integration.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React
+- Vite
+- CSS
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Responsive UI
+- Case study driven design
+- Modular component structure
 
-## Expanding the ESLint configuration
+## Live Demo
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+https://your-site.netlify.app
+
+## Screenshots
+
+### Desktop View
+<img src="./public/screenshots/homepage.png" alt="homepage" width="800" />
+
+### Mobile View
+<img src="./public/screenshots/homepage-mobile.png" alt="mobile" width="350" />
+
+### Case Study
+<img src="./public/screenshots/insta-case-study.png" alt="case study" width="800" />
