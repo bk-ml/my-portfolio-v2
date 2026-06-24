@@ -1,122 +1,165 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import WorkSection from './components/work';
+import InstagramCaseStudy from './components/InstagramCaseStudy';
+import ExperienceSection from './components/experience';
+import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+    <Router basename="/my-portfolio-v2">
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/instagram-case-study" element={<InstagramCaseStudy />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+function Home() {
+  return (
+    <div className="container">
+      {/* NAV */}
+      <nav className="nav">
+        <div className="navLeft">
+          <div className="logo">Bhawna Kochhar</div>
+          <div className="role">Senior Software Engineer</div>
+        </div>
+
+        <div className="navRight">
+          <a href="#work">Work</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact" className="cta">
+            Contact
+          </a>
+        </div>
+      </nav>
+
+      {/* HERO (cleaned + structured) */}
+      <section className="hero">
+        <div className="heroTop">
+          <h1>Senior Software Engineer</h1>
+
+          <h1>
+            Building <span className="highlight">scalable</span>,{' '}
+            <span className="highlight">reliable</span>, and{' '}
+            <span className="highlight">maintainable systems</span>
+          </h1>
+        </div>
+
+        <h2>Backend • Distributed Systems • Full Stack • AI Systems</h2>
+
+        <p className="heroDesc">
+          I design and scale event-driven systems processing millions of events
+          daily, with strong guarantees around reliability, latency, and fault
+          tolerance.
+        </p>
+      </section>
+
+      {/* WORK */}
+      <section id="work" className="section">
+        <WorkSection />
+      </section>
+
+      {/* EXPERTISE */}
+      <section id="expertise" className="section">
+        <h2 className="sectionTitle">Expertise</h2>
+
+        <div className="tags">
+          <span>Distributed Systems</span>
+          <span>System Design (HLD/LLD)</span>
+          <span>Microservices Architecture</span>
+          <span>Event-Driven Architecture</span>
+          <span>Node.js</span>
+          <span>Go</span>
+          <span>AWS</span>
+          <span>Docker</span>
+          <span>Kubernetes</span>
+          <span>Kafka / Message Queues</span>
+          <span>Redis & Caching</span>
+          <span>Database Design</span>
+          <span>API Design (REST/gRPC)</span>
+          <span>React</span>
+        </div>
+      </section>
+
+      {/* EXPERIENCE */}
+      <section id="experience" className="section">
+        <ExperienceSection />
+      </section>
+
+      {/* PROJECTS */}
+      <section id="projects" className="section">
+        <h2 className="sectionTitle">Projects</h2>
+
+        <div className="card">
+          <h3>Real-time Voice AI Agent</h3>
+
+          <p className="muted">
+            Streaming STT → LLM → TTS pipeline with GPU inference optimization.
+          </p>
+
+          <div className="tags">
+            <span>Pipecat</span>
+            <span>Streaming</span>
+            <span>LLM</span>
+            <span>Qwen TTS</span>
+            <span>GPU</span>
+          </div>
+
+          <ul style={{ textAlign: 'left' }}>
+            <li>Built real-time voice pipeline with low latency design</li>
+            <li>Handled audio sync + frame-based streaming issues</li>
+            <li>Optimized inference using GPU deployment</li>
+          </ul>
+        </div>
+      </section>
+
+      {/* RESUME */}
+      <section id="resume" className="section">
+        <h2 className="sectionTitle">Resume</h2>
+
+        <a
+          className="btn"
+          href="/my-portfolio-v2/resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Download Resume
+        </a>
+      </section>
+
+      {/* CONTACT */}
+      <section id="contact" className="section">
+        <h2 className="sectionTitle">Contact</h2>
+
+        <p>
+          Email:{' '}
+          <a href="mailto:bhawnakochhar2@gmail.com">bhawnakochhar2@gmail.com</a>
+        </p>
+
+        <p>
+          LinkedIn:{' '}
+          <a
+            href="https://www.linkedin.com/in/bhawnakochhar"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            www.linkedin.com/in/bhawnakochhar
+          </a>
+        </p>
+
+        <p>
+          GitHub:{' '}
+          <a
+            href="https://github.com/bk-ml"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            github.com/bk-ml
+          </a>
+        </p>
+      </section>
+    </div>
+  );
+}

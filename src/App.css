@@ -1,184 +1,1075 @@
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
+:root {
+  --bg: #0b0f17;
+  --card: #121826;
+  --border: rgba(255, 255, 255, 0.06);
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --accent: #7c3aed;
+}
 
-  &:hover {
-    border-color: var(--accent-border);
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(124, 58, 237, 0.25),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(124, 58, 237, 0.25),
+      transparent 40%
+    );
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* LAYOUT */
+.container {
+  max-width: 1100px;
+  width: 92%;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+/* ================= NAV ================= */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 14px;
+
+  background: rgba(11, 15, 23, 0.5);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+
+.navLeft {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.logo {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.role {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.navRight {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.navRight a {
+  font-size: 13px;
+  color: var(--text);
+  text-decoration: none;
+  opacity: 0.7;
+  transition: 0.2s ease;
+}
+
+.navRight a:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.navRight .cta {
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: white;
+  opacity: 1;
+}
+
+/* ================= SECTIONS ================= */
+
+.section {
+  margin-bottom: 80px;
+}
+
+.sectionTitle {
+  font-size: 20px;
+  margin-bottom: 16px;
+  letter-spacing: 0.2px;
+}
+
+/* ================= HERO ================= */
+
+.hero {
+  padding: 70px 0 50px;
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    margin: auto 15%;
   }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
+}
+
+.heroDesc {
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 38px;
+  margin: 0 0 10px;
+  line-height: 1.2;
+}
+
+.hero h2 {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.hero p {
+  max-width: 700px;
+  color: var(--muted);
+}
+
+/* ================= CARDS ================= */
+
+.card,
+.expCard {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 14px;
+
+  transition: all 0.2s ease;
+}
+
+.card:hover,
+.expCard:hover {
+  transform: translateY(-3px);
+}
+
+/* ================= TAGS ================= */
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.tags span {
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+}
+
+/* ================= BUTTON ================= */
+
+.btn {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: white;
+  text-decoration: none;
+  margin-top: 10px;
+  transition: 0.2s ease;
+}
+
+.btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* ================= EXPERIENCE ================= */
+
+.expHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.duration {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.company {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ================= PROJECT ================= */
+
+.projectCard h3 {
+  margin-bottom: 6px;
+}
+
+.projectCard ul {
+  padding-left: 18px;
+  color: var(--muted);
+}
+
+/* ================= UTILS ================= */
+
+.muted {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 30px;
+  }
+
+  .hero h2 {
+    font-size: 16px;
+  }
+
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin: auto;
+    align-items: center;
+  }
+
+  .expHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    display: block !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 26px;
+  }
+
+  .container {
+    padding: 30px 0;
   }
 }
 
 .hero {
-  position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
+  padding: 80px 0 60px;
+  max-width: 800px;
+  margin: auto;
 }
 
-#center {
+/* TOP BLOCK */
+.heroTop {
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
+  gap: 10px;
+  margin-bottom: 18px;
+}
 
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
+/* MAIN TITLE */
+.hero h1 {
+  font-size: 42px;
+  line-height: 1.15;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+/* SECOND H1 (secondary emphasis line) */
+.hero h1 + h1 {
+  font-weight: 600;
+  opacity: 0.95;
+}
+
+/* HIGHLIGHT */
+.highlight {
+  color: #7c3aed;
+}
+
+/* SUB TITLE */
+.hero h2 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #9ca3af;
+  margin: 16px 0 12px;
+  letter-spacing: 0.2px;
+}
+
+/* DESCRIPTION */
+.heroDesc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #cbd5e1 !important;
+}
+
+.hero h2 {
+  font-size: 13px;
+  font-weight: 500;
+  color: #cbd5e1;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  padding: 15px 30px;
+  display: inline-block;
+  border: 1px solid rgba(124, 58, 237, 0.2);
+  border-radius: 999px;
+  background: rgba(124, 58, 237, 0.06);
+  letter-spacing: 0.3px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero {
+    padding: 60px 0 40px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .hero h2 {
+    font-size: 14px;
+  }
+
+  .heroDesc {
+    font-size: 14px;
   }
 }
 
-#next-steps {
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 26px;
+  }
+}
+#work {
+  padding-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* WORK CARDS */
+#work .card {
+  background: #121826;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+
+  padding: 20px;
+  margin-bottom: 16px;
+
+  transition: all 0.25s ease;
+}
+
+#work .card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(124, 58, 237, 0.25);
+}
+
+/* TITLE */
+#work h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #e5e7eb;
+}
+
+/* DESCRIPTION TEXT */
+#work p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #9ca3af;
+  margin-bottom: 10px;
+}
+
+/* READ MORE BUTTON */
+#work .linkButton {
+  background: transparent;
+  border: none;
+
+  color: #7c3aed;
+  font-size: 13px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+#work .linkButton:hover {
+  transform: translateX(2px);
+  opacity: 0.8;
+}
+
+/* CASE STUDY EXPANSION */
+#work .caseStudy {
+  margin-top: 16px;
+  padding-top: 16px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+
   display: flex;
-  border-top: 1px solid var(--border);
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* CASE STUDY HEADINGS */
+#work .caseStudy h4 {
+  font-size: 12px;
+  font-weight: 600;
+
+  color: #cbd5e1;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* CASE STUDY TEXT */
+#work .caseStudy p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #9ca3af;
+}
+
+/* LIST */
+#work .caseStudy ul {
+  padding-left: 18px;
+  margin: 0;
+
+  color: #cbd5e1;
+}
+
+#work .caseStudy li {
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 6px;
+}
+
+/* IMPACT LINE */
+#work .deepDive {
+  font-size: 13px;
+  color: #7c3aed;
+
+  padding-left: 10px;
+  border-left: 2px solid rgba(124, 58, 237, 0.4);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  #work .card {
+    padding: 16px;
+  }
+
+  #work h3 {
+    font-size: 15px;
+  }
+}
+
+#work {
+  padding-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* IMPORTANT: constrain readable width inside work */
+#work .card {
+  max-width: 820px;
+  margin: 0 auto 18px auto;
+
+  text-align: left; /* 🔥 key fix */
+  padding: 22px;
+
+  background: #121826;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+
+  transition: all 0.25s ease;
+}
+
+#work .card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(124, 58, 237, 0.25);
+}
+
+/* TITLE */
+#work h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+
   text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
 }
 
-#docs {
-  border-right: 1px solid var(--border);
+/* MAIN DESCRIPTION */
+#work > .card > p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #9ca3af;
 
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
+  margin-bottom: 12px;
+  text-align: left;
 }
 
-#next-steps ul {
-  list-style: none;
-  padding: 0;
+/* BUTTON */
+#work .linkButton {
+  margin: 6px 0 12px;
+
+  background: transparent;
+  border: none;
+
+  color: #7c3aed;
+  font-size: 13px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  transition: all 0.2s ease;
+}
+
+#work .linkButton:hover {
+  transform: translateX(3px);
+  opacity: 0.85;
+}
+
+/* CASE STUDY BLOCK */
+#work .caseStudy {
+  margin-top: 16px;
+  padding-top: 16px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+
   display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* SECTION HEADINGS (OVERVIEW / PROBLEM / etc) */
+#work .caseStudy h4 {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  color: #cbd5e1;
+  margin-bottom: 6px;
+}
+
+/* TEXT */
+#work .caseStudy p {
+  font-size: 14px;
+  line-height: 1.75;
+  color: #9ca3af;
+
+  text-align: left;
+  margin: 0;
+}
+
+/* BULLETS → MAKE THEM STRUCTURED */
+#work .caseStudy ul {
+  padding-left: 18px;
+  margin: 0;
+
+  display: grid;
+  gap: 6px;
+
+  color: #cbd5e1;
+}
+
+#work .caseStudy li {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* IMPACT / EMPHASIS */
+#work .deepDive {
+  font-size: 13px;
+  color: #7c3aed;
+
+  padding-left: 12px;
+  border-left: 2px solid rgba(124, 58, 237, 0.4);
+}
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+  #work .card {
+    max-width: 100%;
+    padding: 16px;
+  }
+}
+
+#expertise .tags {
+  justify-content: flex-start;
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.expCard {
+  background: #0f172a;
+  border: 1px solid #1f2937;
+  padding: 18px;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  transition: all 0.2s ease;
+}
+
+.expCard:hover {
+  transform: translateY(-2px);
+  border-color: #334155;
+}
+
+.expHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  cursor: pointer;
+}
+
+.role {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.company {
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.duration {
+  font-size: 12px;
+  color: #64748b;
+  display: block;
+  margin-top: 4px;
+}
+
+.summary {
+  margin-top: 10px;
+  color: #cbd5e1;
+  font-size: 14px;
+}
+
+.details {
+  margin-top: 10px;
+  padding-left: 18px;
+  color: #94a3b8;
+  text-align: left;
+}
+
+.chevron {
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+.expCard:hover {
+  transform: translateY(-2px);
+  cursor: pointer;
+  border-color: #3b82f6;
+}
+
+.title_company {
+  margin-bottom: 0px;
+}
+
+/* =========================
+   BASE LAYOUT
+========================= */
+
+.caseStudy {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 80px 20px;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.caseStudyHero {
+  margin-bottom: 50px;
+}
+
+.caseStudySubtitle {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.caseStudySection {
+  margin-bottom: 30px;
+}
+
+/* meta chips */
+.caseStudyMeta {
+  display: flex;
+  flex-wrap: wrap;
   gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
 }
 
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
+.caseStudyMeta span {
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  color: rgba(0, 0, 0, 0.7);
 }
 
-.ticks {
+/* =========================
+   STORY FLOW (IMPORTANT)
+========================= */
+
+.caseStudyStory {
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+}
+
+/* each section = no card */
+.storyBlock h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: rgba(0, 0, 0, 0.85);
   position: relative;
-  width: 100%;
+  padding-left: 12px;
+}
 
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
-  }
+/* subtle accent line */
+.storyBlock h2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 3px;
+  height: 16px;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 2px;
+}
 
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
+.storyBlock p {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.7);
+  line-height: 1.75;
+}
+
+.storyBlock ul {
+  margin: 10px 0 0;
+  padding-left: 18px;
+}
+
+.storyBlock li {
+  margin-bottom: 8px;
+  color: rgba(0, 0, 0, 0.75);
+  line-height: 1.6;
+}
+
+/* =========================
+   EMPHASIS BLOCK
+========================= */
+
+.storyBlock.highlight {
+  padding: 14px 16px;
+  border-left: 3px solid rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 8px;
+}
+
+/* =========================
+   BACK LINK
+========================= */
+
+.caseStudyBack {
+  margin-top: 60px;
+}
+
+.caseStudyBack a {
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+/* =========================
+   PAGE LAYOUT (CRITICAL FIX)
+========================= */
+
+.caseStudy {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 80px 24px;
+  text-align: left; /* 🔥 fix: remove center feel */
+}
+
+/* =========================
+   HERO
+========================= */
+
+.caseStudySubtitle {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 28px;
+  max-width: 750px;
+}
+
+/* =========================
+   META CHIPS (GOOD — KEEP)
+========================= */
+
+.caseStudyMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 50px;
+}
+
+.caseStudyMeta span {
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  color: rgba(0, 0, 0, 0.7);
+}
+
+/* =========================
+   SECTION STRUCTURE FIX
+========================= */
+
+.caseStudyStory {
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+}
+
+/* KEY FIX: better readability than your current headings */
+.storyBlock h2 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: rgba(0, 0, 0, 0.85);
+
+  position: relative;
+  padding-left: 12px;
+}
+
+/* subtle left accent */
+.storyBlock h2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 3px;
+  height: 16px;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 2px;
+}
+
+.storyBlock p {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.72);
+  line-height: 1.75;
+  max-width: 750px; /* 🔥 improves readability */
+}
+
+.storyBlock ul {
+  margin: 10px 0 0;
+  padding-left: 18px;
+  max-width: 750px;
+}
+
+.storyBlock li {
+  margin-bottom: 8px;
+  color: rgba(0, 0, 0, 0.75);
+  line-height: 1.6;
+}
+
+/* =========================
+   IMPORTANT BLOCKS ONLY
+========================= */
+
+.storyBlock.highlight {
+  padding: 16px 18px;
+  border-left: 3px solid rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 10px;
+}
+
+/* =========================
+   BASE CONTAINER
+========================= */
+
+.caseStudy {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 90px 24px;
+  text-align: left;
+}
+
+/* =========================
+   HERO (STRONGER TYPOGRAPHY HIERARCHY)
+========================= */
+.caseStudyTitle {
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  letter-spacing: -0.03em;
+
+  color: rgba(255, 255, 255, 0.9);
+
+  .highlight {
+    color: #d8b4fe; /* soft lavender */
   }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
-  }
+}
+
+.caseStudySubtitle {
+  font-size: 1.1rem;
+  line-height: 1.75;
+  max-width: 780px;
+  margin-bottom: 30px;
+}
+
+/* =========================
+   META (KEEP BUT REFINE)
+========================= */
+
+.caseStudyMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 60px;
+}
+
+.caseStudyMeta span {
+  font-size: 0.75rem;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  color: rgba(0, 0, 0, 0.65);
+}
+
+/* =========================
+   STORY FLOW (MOST IMPORTANT UPGRADE)
+========================= */
+
+.caseStudyStory {
+  display: flex;
+  flex-direction: column;
+  gap: 42px; /* more breathing space */
+}
+
+/* =========================
+   SECTION = STORY NODE
+========================= */
+
+.storyBlock {
+  position: relative;
+  padding-left: 18px; /* creates reading line */
+}
+
+/* vertical guide (subtle narrative spine) */
+.storyBlock::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 2px;
+}
+
+/* =========================
+   HEADINGS = SCAN ANCHORS
+========================= */
+
+.storyBlock h2 {
+  font-size: 1.05rem;
+  font-weight: 650;
+  margin-bottom: 10px;
+  color: rgba(0, 0, 0, 0.88);
+}
+
+/* subtle emphasis dot */
+.storyBlock h2::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 10px;
+  margin-bottom: 2px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* =========================
+   TEXT (READABILITY FIRST)
+========================= */
+
+.storyBlock p {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.72);
+  line-height: 1.8;
+  max-width: 760px;
+}
+
+/* paragraph spacing when multiple */
+.storyBlock p + p {
+  margin-top: 10px;
+}
+
+/* =========================
+   LISTS (CLEAN + SCANNABLE)
+========================= */
+
+.storyBlock ul {
+  margin: 10px 0 0;
+  padding-left: 18px;
+  max-width: 760px;
+}
+
+.storyBlock li {
+  margin-bottom: 9px;
+  color: rgba(0, 0, 0, 0.75);
+  line-height: 1.6;
+}
+
+/* =========================
+   EMPHASIS BLOCK (ONLY FOR KEY MOMENTS)
+========================= */
+
+.storyBlock.highlight {
+  padding: 16px 18px;
+  background: rgba(0, 0, 0, 0.03);
+  border-left: 3px solid rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
 }
