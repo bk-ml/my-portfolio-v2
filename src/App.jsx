@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import WorkSection from './components/work';
 import InstagramCaseStudy from './components/InstagramCaseStudy';
 import ExperienceSection from './components/experience';
+import ProjectSection from './components/projects';
 import './App.css';
 
 export default function App() {
@@ -90,29 +91,7 @@ function Home() {
 
       {/* PROJECTS */}
       <section id="projects" className="section">
-        <h2 className="sectionTitle">Projects</h2>
-
-        <div className="card">
-          <h3>Real-time Voice AI Agent</h3>
-
-          <p className="muted">
-            Streaming STT → LLM → TTS pipeline with GPU inference optimization.
-          </p>
-
-          <div className="tags">
-            <span>Pipecat</span>
-            <span>Streaming</span>
-            <span>LLM</span>
-            <span>Qwen TTS</span>
-            <span>GPU</span>
-          </div>
-
-          <ul style={{ textAlign: 'left' }}>
-            <li>Built real-time voice pipeline with low latency design</li>
-            <li>Handled audio sync + frame-based streaming issues</li>
-            <li>Optimized inference using GPU deployment</li>
-          </ul>
-        </div>
+        <ProjectSection />
       </section>
 
       {/* RESUME */}

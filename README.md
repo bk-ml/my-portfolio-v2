@@ -16,15 +16,18 @@ A scalable UI for scheduling and managing social media posts with Instagram-styl
 
 ## Live Demo
 
-https://your-site.netlify.app
+https://bk-ml.github.io/my-portfolio-v2
 
 ## Screenshots
 
 ### Desktop View
+
 <img src="./public/screenshots/homepage.png" alt="homepage" width="800" />
 
 ### Mobile View
+
 <img src="./public/screenshots/homepage-mobile.png" alt="mobile" width="350" />
 
 ### Case Study
+
 <img src="./public/screenshots/insta-case-study.png" alt="case study" width="800" />
