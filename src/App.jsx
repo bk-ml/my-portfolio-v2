@@ -8,7 +8,7 @@ import ExpertiseSection from './components/expertise';
 
 export default function App() {
   return (
-    <Router basename="/">
+    <Router>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/instagram-case-study" element={<InstagramCaseStudy />} />
